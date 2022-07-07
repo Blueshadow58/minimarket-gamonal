@@ -1,13 +1,16 @@
-import logo from './logo.svg';
+import logo from './colun-chocolate.png';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        
+        
         <img src={logo} className="App-logo" alt="logo" />
+       
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Aplicación Mini Market
         </p>
         <a
           className="App-link"
