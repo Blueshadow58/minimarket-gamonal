@@ -1,17 +1,15 @@
-import logo from './colun-chocolate.png';
-import './App.css';
+import logo from "./colun-chocolate.png";
+import "./App.css";
+import NavBar from "./components/NavBar.js";
 
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <header className="App-header">
-        
-        
         <img src={logo} className="App-logo" alt="logo" />
-       
-        <p>
-          Aplicación Mini Market
-        </p>
+
+        <p>Aplicación Mini Market</p>
         <a
           className="App-link"
           href="https://reactjs.org"
