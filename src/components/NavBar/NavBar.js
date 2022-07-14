@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
+import CartWidget from "./CartWidget";
 
 function navBar() {
   return (
@@ -13,7 +14,7 @@ function navBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto justify-content-center">
             <Nav.Link href="#Inicio">Inicio</Nav.Link>
             <Nav.Link href="#Contacto">Contacto</Nav.Link>
             <NavDropdown title="Productos">
@@ -29,7 +30,9 @@ function navBar() {
           </Nav>
 
           <Nav>
-            <Nav.Link href="#deets">Login</Nav.Link>
+            <CartWidget />
+            <Nav.Link href="#deets">Iniciar Sesion</Nav.Link>
+            <Nav.Link href="#deets">Registrarme</Nav.Link>
             {/* <Nav.Link eventKey={2} href="#memes">
               Dank memes
             </Nav.Link> */}
