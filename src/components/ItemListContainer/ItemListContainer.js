@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import "./ItemListContainer.css";
 
 // const ItemListContainer = ({ props }) => {
 //   return <span>{props}</span>;
@@ -10,21 +11,17 @@ import Container from "react-bootstrap/Container";
 // export default ItemListContainer;
 
 import React, { Component } from "react";
+import ItemCount from "./ItemCount/ItemCount";
 
 export default class ItemListContainer extends Component {
   render() {
-    //return <div>{this.props.greatings}</div>;
-
     return (
       <Container className="mt-5">
         <Row xs={1} md={4} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
+          {Array.from({ length: 1 }).map((_, idx) => (
             <Col>
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src="https://picsum.photos/id/102/200/150"
-                />
+              <Card className="CustomCard">
+                <Card.Img src="https://picsum.photos/id/102/200/150" />
                 <Card.Body>
                   <Card.Title>{this.props.greatings}</Card.Title>
                   <Card.Text>
@@ -32,6 +29,7 @@ export default class ItemListContainer extends Component {
                     natural lead-in to additional content. This content is a
                     little bit longer.
                   </Card.Text>
+                  <ItemCount stock={5} initial={1} />
                 </Card.Body>
               </Card>
             </Col>
