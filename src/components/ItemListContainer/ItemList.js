@@ -7,7 +7,9 @@ const ItemList = ({ items }) => {
     <Row xs={1} md={4} className="g-4">
       <div>
         {items.map((item) => (
-          <Col key={items.id}> {<Item key={item.id} item={item} />}</Col>
+          <Col key={item.id}>
+            <Item key={item.id} item={item} />
+          </Col>
         ))}
       </div>
     </Row>
