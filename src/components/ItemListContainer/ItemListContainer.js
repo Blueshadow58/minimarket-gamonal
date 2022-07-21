@@ -1,41 +1,58 @@
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import "./ItemListContainer.css";
+import ItemList from "./ItemList";
+import { useEffect, useState } from "react";
 
-// const ItemListContainer = ({ props }) => {
-//   return <span>{props}</span>;
-// };
+const products = [
+  {
+    id: "1",
+    title: "Frambuesas",
+    price: 3300,
+    pictureUrl: "url",
+    stock: 10,
+  },
+];
 
-// export default ItemListContainer;
+const mock = () => {
+  const task = new Promise((resolve) => {
+    setTimeout(() => resolve(products), 2000);
+  });
+  return task;
+};
 
-import React, { Component } from "react";
-import ItemCount from "./ItemCount/ItemCount";
+const ItemListContainer = ({ greetings }) => {
+  const [items, setItems] = useState([]);
 
-export default class ItemListContainer extends Component {
-  render() {
-    return (
-      <Container className="mt-5">
-        <Row xs={1} md={4} className="g-4">
-          {Array.from({ length: 1 }).map((_, idx) => (
-            <Col>
-              <Card className="CustomCard">
-                <Card.Img src="https://picsum.photos/id/102/200/150" />
-                <Card.Body>
-                  <Card.Title>{this.props.greatings}</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </Card.Text>
-                  <ItemCount stock={5} initial={1} />
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    );
-  }
-}
+  useEffect(() => {
+    mock().then((data) => {
+      setItems(data);
+    });
+  }, []);
+
+  return (
+    <Container className="mt-5">
+      <ItemList items={items} />
+
+      {/* <Row xs={1} md={4} className="g-4">
+        {Array.from({ length: 1 }).map((_, idx) => (
+          <Col>
+            <Card className="CustomCard">
+              <Card.Img src="https://picsum.photos/id/102/200/150" />
+              <Card.Body>
+                <Card.Title>{greetings}</Card.Title>
+                <Card.Text>
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </Card.Text>
+                <ItemCount stock={5} initial={1} />
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row> */}
+    </Container>
+  );
+};
+
+export default ItemListContainer;

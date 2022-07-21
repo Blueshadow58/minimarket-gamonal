@@ -38,6 +38,8 @@ function ItemCount({ stock, initial, onAdd }) {
           <input
             type="text"
             className="form-control input-number text-center"
+            // value={count}
+            onChange={(value) => this.onChange(value)}
             value={count}
           />
           <span className="input-group-btn">
