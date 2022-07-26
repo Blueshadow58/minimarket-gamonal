@@ -57,7 +57,7 @@ function ItemCount({ stock, initial, onAdd }) {
           <button
             onClick={addToCart}
             type="button"
-            className="btn btn-success btn-number "
+            className="btn btn btn-outline-dark flex-shrink-0 btn-number "
           >
             Agregar al Carro
           </button>
