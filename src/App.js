@@ -2,17 +2,39 @@ import logo from "./colun-chocolate.png";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar.js";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
-import ItemCount from "./components/ItemListContainer/ItemCount";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailContainer from "./components/ItemListContainer/ItemDetails/ItemDetailContainer";
 
 const Message = "Greatings Message Testing";
 
+const category = "cafe";
+
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+      {/* navbar */}
       <NavBar />
-      {/* Contenedor de elementos */}
-      <ItemListContainer greetings={Message} />
-    </div>
+      <Routes>
+        {/* home */}
+        <Route
+          exact
+          path="/"
+          element={<ItemListContainer greetings={Message} />}
+        />
+        {/* detalle prodducto */}
+        <Route exact path="/item/:id" element={<ItemDetailContainer />} />
+        {/* filtro por categoria */}
+        <Route
+          exact
+          path="/category/:category"
+          element={<ItemListContainer />}
+        />
+        {/* no encontrar lo que busca en url */}
+        <Route exact path="*" element={<ItemListContainer />} />
+      </Routes>
+      {/* <div className="App">Contenedor de elementos</div> */}
+    </BrowserRouter>
   );
 }
 

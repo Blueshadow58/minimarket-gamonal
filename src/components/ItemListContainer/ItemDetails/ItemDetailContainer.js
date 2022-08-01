@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getItem } from "../../../utils/api";
-import Container from "react-bootstrap/Container";
+
 import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer({ productId, closeModal }) {
+function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
+  //Objtener de la ruta
+  const { id } = useParams();
 
   useEffect(() => {
-    getItem(productId).then((data) => {
+    getItem(id).then((data) => {
       setProduct(data);
     });
-  });
+  }, [id]);
 
-  return <ItemDetail closeModal={closeModal} product={product} />;
+  return <ItemDetail product={product} />;
 }
 
 export default ItemDetailContainer;

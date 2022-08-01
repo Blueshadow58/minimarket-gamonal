@@ -2,19 +2,25 @@ import Container from "react-bootstrap/Container";
 import "./ItemListContainer.css";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
-import { mock } from "../../utils/api";
-import ItemDetail from "./ItemDetails/ItemDetail";
-import { Button } from "bootstrap";
-import ItemDetailContainer from "./ItemDetails/ItemDetailContainer";
+import { getItems } from "../../utils/api";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = ({ greetings }) => {
   const [items, setItems] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
+
+  const { category } = useParams();
+
   useEffect(() => {
-    mock().then((data) => {
-      setItems(data);
-    });
-  }, []);
+    getItems()
+      .then((data) => {
+        if (category) {
+          setItems(data.filter((product) => product.category === category));
+        } else {
+          setItems(data);
+        }
+      })
+      .catch((err) => alert(err));
+  }, [category]);
 
   return (
     <Container className="mt-5">

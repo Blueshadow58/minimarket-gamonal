@@ -1,6 +1,68 @@
 const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 const type = "";
 
+const products = [
+  {
+    id: "1",
+    title: "Cafe Juan Valdez",
+    price: 3300,
+    pictureUrl:
+      "https://jumbo.vtexassets.com/arquivos/ids/311066/Principal-5141.jpg?v=637025995567670000",
+    stock: 10,
+    category: "cafe",
+    description: "Cafe Juan Valdez sabor tradicional",
+  },
+  {
+    id: "2",
+    title: "Pasta de Esparrago",
+    price: 3000,
+    pictureUrl:
+      "https://tremus.cl/wp-content/uploads/2020/12/FRENTE-1280163.jpg",
+    stock: 5,
+    category: "conserva",
+    description: "Pasta de esparragos Cosecha Verde",
+  },
+  {
+    id: "3",
+    title: "Mermelada de higo",
+    price: 4000,
+    pictureUrl:
+      "https://dojiw2m9tvv09.cloudfront.net/38010/product/X_mermelada-higo7694.jpg?56",
+    stock: 4,
+    description: "Mermelada de higo Cosecha Verde",
+  },
+  {
+    id: "4",
+    title: "Cafe Cruzeiro",
+    price: 2100,
+    pictureUrl:
+      "https://http2.mlstatic.com/D_NQ_NP_642461-MLC46369076078_062021-O.jpg",
+    stock: 2,
+    category: "cafe",
+    description: "Cafe sabor tradicional Cruzeiro",
+  },
+  {
+    id: "5",
+    title: "Mermelada Mango",
+    price: 2700,
+    pictureUrl:
+      "https://dojiw2m9tvv09.cloudfront.net/38010/product/mermelada-mango_maracuya7454.jpg",
+    stock: 7,
+    category: "mermelada",
+    description: "Mermelada de mango Cosecha Verde",
+  },
+  {
+    id: "6",
+    title: "Pimenton Morrón",
+    price: 1800,
+    pictureUrl:
+      "https://tremus.cl/wp-content/uploads/2020/07/Pimiento-Morron.jpg",
+    stock: 2,
+    category: "conserva",
+    description: "Pimenton morrón Cosecha Verde",
+  },
+];
+
 export const getData = (dataId) =>
   fetch(`${BASE_URL}/comments?postId=${dataId}&type=${type}`, {
     method: "GET",
@@ -36,26 +98,7 @@ export const deleteData = (dataId) =>
     method: "DELETE",
   });
 
-const products = [
-  {
-    id: "1",
-    title: "Frambuesas",
-    price: 3300,
-    pictureUrl: "https://picsum.photos/id/102/600/700",
-    stock: 10,
-    description: "Kilo de frambuesas",
-  },
-  // {
-  //   id: "2",
-  //   title: "Naranjas",
-  //   price: 3000,
-  //   pictureUrl: "https://picsum.photos/id/102/600/700",
-  //   stock: 5,
-  //   description: "Kilo de naranjas",
-  // },
-];
-
-export const mock = () => {
+export const getItems = () => {
   const task = new Promise((resolve) => {
     setTimeout(() => resolve(products), 2000);
   });
@@ -63,9 +106,9 @@ export const mock = () => {
 };
 
 //Llammar producto
-export const getItem = (productId) => {
+export const getItem = (id) => {
   const task = new Promise((resolve) => {
-    setTimeout(() => resolve(products[productId - 1]), 2000);
+    setTimeout(() => resolve(products[id - 1]), 2000);
   });
   return task;
 };
