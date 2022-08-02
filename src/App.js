@@ -30,6 +30,8 @@ function App() {
           path="/category/:category"
           element={<ItemListContainer />}
         />
+        {/* Cart page */}
+        <Route exact path="/cart" element={<h1>Cart</h1>} />
         {/* no encontrar lo que busca en url */}
         <Route exact path="*" element={<ItemListContainer />} />
       </Routes>

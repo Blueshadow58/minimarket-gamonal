@@ -1,11 +1,17 @@
 import Spinner from "react-bootstrap/Spinner";
 import ItemCount from "../ItemCount";
 import "./ItemDetail.css";
+import { useNavigate } from "react-router-dom";
 
 function ItemDetail({ product }) {
   let show = false;
-
+  const navigate = useNavigate();
   Object.values(product) == "" ? (show = false) : (show = true);
+
+  const handleAdd = (quantityToAdd) => {
+    console.log(`Cantidad de productos a agregar: ${quantityToAdd}`);
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -38,7 +44,7 @@ function ItemDetail({ product }) {
             <p className="lead">{product.description}</p>
             <p className="lead">Stock: {product.stock}</p>
             <div className="d-flex">
-              <ItemCount stock={product.stock} initial={1} />
+              <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
             </div>
           </div>
         </div>
