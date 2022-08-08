@@ -3,7 +3,7 @@ const type = "";
 
 const products = [
   {
-    id: "1",
+    id: 1,
     title: "Cafe Juan Valdez",
     price: 3300,
     pictureUrl:
@@ -13,7 +13,7 @@ const products = [
     description: "Cafe Juan Valdez sabor tradicional",
   },
   {
-    id: "2",
+    id: 2,
     title: "Pasta de Esparrago",
     price: 3000,
     pictureUrl:
@@ -23,7 +23,7 @@ const products = [
     description: "Pasta de esparragos Cosecha Verde",
   },
   {
-    id: "3",
+    id: 3,
     title: "Mermelada de higo",
     price: 4000,
     pictureUrl:
@@ -32,7 +32,7 @@ const products = [
     description: "Mermelada de higo Cosecha Verde",
   },
   {
-    id: "4",
+    id: 4,
     title: "Cafe Cruzeiro",
     price: 2100,
     pictureUrl:
@@ -42,7 +42,7 @@ const products = [
     description: "Cafe sabor tradicional Cruzeiro",
   },
   {
-    id: "5",
+    id: 5,
     title: "Mermelada Mango",
     price: 2700,
     pictureUrl:
@@ -52,7 +52,7 @@ const products = [
     description: "Mermelada de mango Cosecha Verde",
   },
   {
-    id: "6",
+    id: 6,
     title: "Pimenton Morrón",
     price: 1800,
     pictureUrl:

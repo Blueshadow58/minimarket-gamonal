@@ -1,15 +1,14 @@
 import Card from "react-bootstrap/Card";
-import ItemCount from "./ItemCount";
+
 import Stack from "react-bootstrap/Stack";
 
-import { useState } from "react";
-import ItemDetailContainer from "./ItemDetails/ItemDetailContainer";
-import Button from "react-bootstrap/Button";
+// import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import "./Item.css";
 
 const Item = ({ item }) => {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   const navigate = useNavigate();
   const handleClick = () => {

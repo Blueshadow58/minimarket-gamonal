@@ -10,12 +10,12 @@ function navBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand className="text-center" as={Link} to="/">
           GM
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto justify-content-center">
+          <Nav className="me-auto align-items-center">
             <Nav.Link as={Link} to="/">
               Inicio
             </Nav.Link>
@@ -37,12 +37,13 @@ function navBar() {
             </NavDropdown>
           </Nav>
 
-          <Nav>
+          <Nav className="align-items-center">
             <CartWidget />
-            <Nav.Link href="#deets">Iniciar Sesion</Nav.Link>
-            <Nav.Link href="#deets">Registrarme</Nav.Link>
-            {/* <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+            {/* Modulos de login */}
+            <Nav.Link href="/">Iniciar Sesion</Nav.Link>
+            <Nav.Link href="/">Registrarme</Nav.Link>
+            {/* <Nav.Link eventKey={2} href="#">
+              
             </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>

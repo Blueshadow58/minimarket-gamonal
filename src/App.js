@@ -1,4 +1,3 @@
-import logo from "./colun-chocolate.png";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar.js";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
@@ -6,36 +5,39 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemListContainer/ItemDetails/ItemDetailContainer";
 
-const Message = "Greatings Message Testing";
+import { Navigate } from "react-router-dom";
 
-const category = "cafe";
+import CartProvider from "./context/CartContext";
+import Cart from "./components/Cart/Cart";
+
+const Message = "Greatings Message Testing";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* navbar */}
-      <NavBar />
-      <Routes>
-        {/* home */}
-        <Route
-          exact
-          path="/"
-          element={<ItemListContainer greetings={Message} />}
-        />
-        {/* detalle prodducto */}
-        <Route exact path="/item/:id" element={<ItemDetailContainer />} />
-        {/* filtro por categoria */}
-        <Route
-          exact
-          path="/category/:category"
-          element={<ItemListContainer />}
-        />
-        {/* Cart page */}
-        <Route exact path="/cart" element={<h1>Cart</h1>} />
-        {/* no encontrar lo que busca en url */}
-        <Route exact path="*" element={<ItemListContainer />} />
-      </Routes>
-      {/* <div className="App">Contenedor de elementos</div> */}
+      <CartProvider>
+        <NavBar />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<ItemListContainer greetings={Message} />}
+          />
+
+          <Route exact path="/item/:id" element={<ItemDetailContainer />} />
+
+          <Route
+            exact
+            path="/category/:category"
+            element={<ItemListContainer />}
+          />
+
+          <Route exact path="/cart" element={<Cart />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+        {/* <div className="App">Contenedor de elementos</div> */}
+      </CartProvider>
     </BrowserRouter>
   );
 }

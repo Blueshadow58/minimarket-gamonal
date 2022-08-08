@@ -2,16 +2,33 @@ import Spinner from "react-bootstrap/Spinner";
 import ItemCount from "../ItemCount";
 import "./ItemDetail.css";
 import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../../context/CartContext";
 
-function ItemDetail({ product }) {
-  let show = false;
+const ItemDetail = ({ product }) => {
+  const [count, setCount] = useState(0);
+  const { addToCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+
   const navigate = useNavigate();
-  Object.values(product) == "" ? (show = false) : (show = true);
+
+  const [show, setShow] = useState(false);
+  //let show = false;
 
   const handleAdd = (quantityToAdd) => {
-    console.log(`Cantidad de productos a agregar: ${quantityToAdd}`);
+    // console.log(`Cantidad de productos a agregar: ${quantityToAdd}`);
+    setCount(quantityToAdd);
+
+    addToCart(product, quantityToAdd);
     navigate("/cart");
   };
+
+  useEffect(() => {
+    // addToCart(product, count);
+    // console.log(product);
+    !Array.isArray(product) ? setShow(true) : setShow(false);
+    // console.log(product);
+  }, [cart, product, count]);
 
   return (
     <>
@@ -51,6 +68,6 @@ function ItemDetail({ product }) {
       </div>
     </>
   );
-}
+};
 
 export default ItemDetail;
