@@ -98,6 +98,14 @@ export const deleteData = (dataId) =>
     method: "DELETE",
   });
 
+const formatter = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  minimumFractionDigits: 0,
+});
+
+products.price = formatter.format(products.price);
+
 export const getItems = () => {
   const task = new Promise((resolve) => {
     setTimeout(() => resolve(products), 2000);

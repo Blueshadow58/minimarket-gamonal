@@ -72,13 +72,35 @@ const CartProvider = ({ children }) => {
     setCart(filteredCart);
   };
 
+  // let cantInCart = 0;
+  // cart.forEach((item) => {
+  //   cantInCart += item.quantity;
+  // });
+
+  const cantInCart = cart.reduce(
+    (previous, item) => previous + item.quantity,
+    0
+  );
+
+  // const formatter = new Intl.NumberFormat("es-CL", {
+  //   style: "currency",
+  //   currency: "CLP",
+  //   minimumFractionDigits: 0,
+  // });
+
+  const totalPriceInCart = cart.reduce(
+    (previous, item) => previous + item.price * item.quantity,
+    0
+  );
+
   const valueToShare = {
     cart,
     isInCart,
     cleanCart,
     addToCart,
     removeToCart,
-    cantInCart: cart.length,
+    cantInCart,
+    totalPriceInCart,
   };
   return (
     // proveer valores a compartirs

@@ -45,7 +45,11 @@ const ItemDetail = ({ product }) => {
       <div className="container px-4 px-lg-5 my-5" hidden={!show}>
         <div className="row gx-4 gx-lg-5 align-items-center">
           <div className="col-md-6 ">
-            <img className="detail-img" src={product.pictureUrl} alt="..." />
+            <img
+              className="detail-img img-fluid"
+              src={product.pictureUrl}
+              alt="..."
+            />
           </div>
           <div className="col-md-6">
             <div className="small mb-1">Codigo de producto: {product.id}</div>
