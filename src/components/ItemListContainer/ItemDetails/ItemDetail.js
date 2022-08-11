@@ -26,9 +26,11 @@ const ItemDetail = ({ product }) => {
   useEffect(() => {
     // addToCart(product, count);
     // console.log(product);
+
     !Array.isArray(product) ? setShow(true) : setShow(false);
+
     // console.log(product);
-  }, [cart, product, count]);
+  }, [product]);
 
   return (
     <>
@@ -52,13 +54,17 @@ const ItemDetail = ({ product }) => {
             />
           </div>
           <div className="col-md-6">
-            <div className="small mb-1">Codigo de producto: {product.id}</div>
-            <h1 className="display-5 fw-bolder">{product.title}</h1>
-            <div className="fs-5 mb-5">
-              <span className="text-decoration-line-through">
-                {/* ${Math.round(product.price * 1.1)} */}
+            {/* <div className="small mb-1">Codigo de producto: {product.id}</div> */}
+
+            <div className="pb-3">
+              <span className="display-5 fw-bolder h1 pb-2">
+                {product.title}
               </span>
-              <span>
+            </div>
+            <div className="fs-5 mb-3">
+              {/* <span className="text-decoration-line-through">Precio</span> */}
+              <span className="h4">Precio:</span>
+              <span className="h4">
                 <> </>${product.price}
               </span>
             </div>

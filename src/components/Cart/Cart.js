@@ -117,7 +117,7 @@ function Cart() {
                                 </div>
                               </div>
                               <Col md={3} lg={3} xl={2} className="d-flex">
-                                <button className="btn btn-link px-1">
+                                <button className="btn btn-danger  px-1">
                                   <Dash />
                                 </button>
 
@@ -127,10 +127,11 @@ function Cart() {
                                   name="quantity"
                                   value={product.quantity}
                                   type="text"
-                                  className="form-control form-control-sm input-number text-center"
+                                  className="form-control form-control-sm input-number text-center "
+                                  onChange={(value) => this.onChange(value)}
                                 />
 
-                                <button className="btn btn-link px-1">
+                                <button className="btn  btn-success px-1">
                                   <Plus />
                                 </button>
                               </Col>

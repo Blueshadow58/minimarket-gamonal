@@ -9,6 +9,8 @@ import { Navigate } from "react-router-dom";
 
 import CartProvider from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
+import { useEffect, useState } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const Message = "Greatings Message Testing";
 
