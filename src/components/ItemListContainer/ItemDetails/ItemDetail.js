@@ -1,15 +1,13 @@
 import Spinner from "react-bootstrap/Spinner";
 import ItemCount from "../ItemCount";
 import "./ItemDetail.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
   const { addToCart } = useContext(CartContext);
-  const { cart } = useContext(CartContext);
-  const navigate = useNavigate();
 
   const { isInCart } = useContext(CartContext);
   const [show, setShow] = useState(false);
@@ -19,11 +17,11 @@ const ItemDetail = ({ product }) => {
     if (isInCart(product.id)) {
       setRedirectButton(true);
     }
-  });
+  }, [isInCart, product.id]);
 
   const handleAdd = (quantityToAdd) => {
     // console.log(`Cantidad de productos a agregar: ${quantityToAdd}`);
-    setCount(quantityToAdd);
+    // setCount(quantityToAdd);
 
     addToCart(product, quantityToAdd);
     setRedirectButton(true);

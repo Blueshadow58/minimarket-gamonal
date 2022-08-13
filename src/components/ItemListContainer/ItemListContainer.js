@@ -4,8 +4,6 @@ import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { getItems } from "../../utils/api";
 import { useParams } from "react-router-dom";
-import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 const ItemListContainer = ({ greetings }) => {
   const [items, setItems] = useState([]);
