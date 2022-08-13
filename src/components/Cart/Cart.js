@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 import "./Cart.css";
@@ -16,11 +16,26 @@ function Cart() {
   const { cart } = useContext(CartContext);
   const { cantInCart } = useContext(CartContext);
   const { totalPriceInCart } = useContext(CartContext);
+  const { removeToCart } = useContext(CartContext);
+  const { decreaseCantProduct } = useContext(CartContext);
+  const { increaseCantProduct } = useContext(CartContext);
+
+  //precio envio
   const [shipp, setShipp] = useState(0);
 
-  const Eliminar = () => {
-    console.log("funcion consolo log de eliminar");
+  const deleteProduct = (id) => {
+    removeToCart(id);
   };
+
+  const reduceCant = (id) => {
+    decreaseCantProduct(id);
+  };
+
+  const increaseCant = (id) => {
+    increaseCantProduct(id);
+  };
+
+  useEffect(() => {}, [cart, cantInCart]);
 
   // console.log(isInCart(1));
 
@@ -117,7 +132,10 @@ function Cart() {
                                 </div>
                               </div>
                               <Col md={3} lg={3} xl={2} className="d-flex">
-                                <button className="btn btn-danger  px-1">
+                                <button
+                                  onClick={() => reduceCant(product.id)}
+                                  className="btn btn-danger  px-1"
+                                >
                                   <Dash />
                                 </button>
 
@@ -131,7 +149,10 @@ function Cart() {
                                   onChange={(value) => this.onChange(value)}
                                 />
 
-                                <button className="btn  btn-success px-1">
+                                <button
+                                  onClick={() => increaseCant(product.id)}
+                                  className="btn  btn-success px-1"
+                                >
                                   <Plus />
                                 </button>
                               </Col>
@@ -144,7 +165,7 @@ function Cart() {
 
                               <Col md={2} lg={2} xl={2}>
                                 <button
-                                  onClick={Eliminar}
+                                  onClick={() => deleteProduct(product.id)}
                                   className="btn btn-danger"
                                 >
                                   <TrashFill size={25} className="" />

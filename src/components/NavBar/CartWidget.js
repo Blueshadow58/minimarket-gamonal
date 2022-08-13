@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const CartWidget = () => {
   const { cantInCart } = useContext(CartContext); //Consumir del context
-  console.log(cantInCart);
 
   return (
     <>

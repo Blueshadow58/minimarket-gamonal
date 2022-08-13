@@ -12,9 +12,14 @@ const CartProvider = ({ children }) => {
       (itemInTheCart) => itemInTheCart.id === productId
     );
     const product = cart[itemByIndex];
-    product
-      ? console.log(product)
-      : console.log("El producto no existe en el carro");
+
+    if (product) {
+      return true;
+    } else {
+      return false;
+    }
+
+    // return product ? product : false;
   };
   const cleanCart = () => {
     setCart([]);
@@ -72,26 +77,59 @@ const CartProvider = ({ children }) => {
     setCart(filteredCart);
   };
 
-  // let cantInCart = 0;
-  // cart.forEach((item) => {
-  //   cantInCart += item.quantity;
-  // });
-
   const cantInCart = cart.reduce(
     (previous, item) => previous + item.quantity,
     0
   );
 
-  // const formatter = new Intl.NumberFormat("es-CL", {
-  //   style: "currency",
-  //   currency: "CLP",
-  //   minimumFractionDigits: 0,
-  // });
-
   const totalPriceInCart = cart.reduce(
     (previous, item) => previous + item.price * item.quantity,
     0
   );
+
+  const decreaseCantProduct = (productId) => {
+    const item = cart.find((x) => x.id === productId);
+
+    const itemIndex = cart.findIndex(
+      (itemInTheCart) => itemInTheCart.id === item.id
+    );
+
+    if (cart[itemIndex].quantity > 1) {
+      const itemToUpdate = {
+        ...item,
+        quantity: cart[itemIndex].quantity - 1,
+      };
+      //copia del carrito
+      const cartDraft = [...cart];
+
+      //actualizar el item de un id especifico
+      cartDraft[itemIndex] = itemToUpdate;
+
+      setCart(cartDraft);
+    }
+  };
+
+  const increaseCantProduct = (productId) => {
+    const item = cart.find((x) => x.id === productId);
+
+    const itemIndex = cart.findIndex(
+      (itemInTheCart) => itemInTheCart.id === item.id
+    );
+
+    if (cart[itemIndex].quantity < cart[itemIndex].stock) {
+      const itemToUpdate = {
+        ...item,
+        quantity: cart[itemIndex].quantity + 1,
+      };
+      //copia del carrito
+      const cartDraft = [...cart];
+
+      //actualizar el item de un id especifico
+      cartDraft[itemIndex] = itemToUpdate;
+
+      setCart(cartDraft);
+    }
+  };
 
   const valueToShare = {
     cart,
@@ -101,6 +139,8 @@ const CartProvider = ({ children }) => {
     removeToCart,
     cantInCart,
     totalPriceInCart,
+    decreaseCantProduct,
+    increaseCantProduct,
   };
   return (
     // proveer valores a compartirs
