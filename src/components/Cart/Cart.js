@@ -7,70 +7,49 @@ import Button from "react-bootstrap/Button";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { CartX as CartIcon } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { Plus } from "react-bootstrap-icons";
-import { Dash } from "react-bootstrap-icons";
-import { TrashFill } from "react-bootstrap-icons";
-import { Col } from "react-bootstrap";
 
-function Cart() {
-  const { cart } = useContext(CartContext);
-  const { cantInCart } = useContext(CartContext);
-  const { totalPriceInCart } = useContext(CartContext);
-  const { removeToCart } = useContext(CartContext);
-  const { decreaseCantProduct } = useContext(CartContext);
-  const { increaseCantProduct } = useContext(CartContext);
+import CartItem from "./CartItem";
+
+function Cart({ props }) {
+  const {
+    cart,
+    decreaseCantProduct,
+    increaseCantProduct,
+    cantInCart,
+    totalPriceInCart,
+    removeToCart,
+    inputChangeCant,
+  } = props;
 
   //precio envio
+  // const {
+  //   cart,
+  //   isInCart,
+  //   addToCart,
+  //   removeToCart,
+  //   cantInCart,
+  //   totalPriceInCart,
+  //   decreaseCantProduct,
+  //   increaseCantProduct,
+  // } = valueToShare;
+
   const [shipp, setShipp] = useState(0);
 
-  const deleteProduct = (id) => {
-    removeToCart(id);
-  };
+  // const deleteProduct = (id) => {
+  //   removeToCart(id);
+  // };
 
-  const reduceCant = (id) => {
-    decreaseCantProduct(id);
-  };
+  // const reduceCant = (id) => {
+  //   decreaseCantProduct(id);
+  // };
 
-  const increaseCant = (id) => {
-    increaseCantProduct(id);
-  };
+  // const increaseCant = (id) => {
+  //   increaseCantProduct(id);
+  // };
 
   useEffect(() => {}, [cart, cantInCart]);
 
-  // console.log(isInCart(1));
-
-  // console.log(removeToCart(2));
-  //console.log(data);
   return (
-    // <Container classNameName="mt-5">
-    //   <Table responsive classNameName="table ">
-    //     <thead>
-    //       <tr>
-    //         <th></th>
-
-    //         <th>Nombre</th>
-    //         <th>Precio</th>
-    //         <th>Categoria</th>
-    //         <th>Descripcion</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {Array.from(cart).map((product, index) => (
-    //         <tr>
-    //           <td>
-    //             <img classNameName="img-td" src={product.pictureUrl} alt="..." />
-    //           </td>
-
-    //           <td> {product.title}</td>
-    //           <td> {product.price}</td>
-    //           <td> {product.category}</td>
-    //           <td> {product.description}</td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </Table>
-    // </Container>
-
     <section className="h-100 h-custom">
       <div className="container py-5 ">
         <div className="row d-flex justify-content-center align-items-center h-100">
@@ -110,79 +89,14 @@ function Cart() {
                         </div>
                       ) : (
                         Array.from(cart).map((product, index) => (
-                          <div key={product.id}>
-                            <div className="row mb-4 d-flex justify-content-between align-items-center">
-                              <div className="col-md-2 col-lg-2 col-xl-2">
-                                <img
-                                  src={product.pictureUrl}
-                                  className="img-fluid rounded-3"
-                                  alt="Cotton T-shirt"
-                                />
-                              </div>
-                              <div className="col-md-3 col-lg-3 col-xl-3">
-                                <div className="row">
-                                  <span className="text-muted h6">
-                                    {product.category}
-                                  </span>
-                                </div>
-                                <div className="row">
-                                  <span className="text-black mb-0 h6">
-                                    {product.description}
-                                  </span>
-                                </div>
-                              </div>
-                              <Col md={3} lg={3} xl={2} className="d-flex">
-                                <button
-                                  onClick={() => reduceCant(product.id)}
-                                  className="btn btn-danger  px-1"
-                                >
-                                  <Dash />
-                                </button>
-
-                                <input
-                                  id="form1"
-                                  min="0"
-                                  name="quantity"
-                                  value={product.quantity}
-                                  type="text"
-                                  className="form-control form-control-sm input-number text-center "
-                                  onChange={(value) => this.onChange(value)}
-                                />
-
-                                <button
-                                  onClick={() => increaseCant(product.id)}
-                                  className="btn  btn-success px-1"
-                                >
-                                  <Plus />
-                                </button>
-                              </Col>
-
-                              <Col md={2} lg={2} xl={2}>
-                                <span className="mb-0 h5">
-                                  $ {product.price}
-                                </span>
-                              </Col>
-
-                              <Col md={2} lg={2} xl={2}>
-                                <button
-                                  onClick={() => deleteProduct(product.id)}
-                                  className="btn btn-danger"
-                                >
-                                  <TrashFill size={25} className="" />
-                                </button>
-                              </Col>
-
-                              {/* <div className="col-md-1 col-lg-1 col-xl-1 ">
-                                <button
-                                  onClick={Eliminar}
-                                  className="btn btn-danger"
-                                >
-                                  <TrashFill size={25} className="" />
-                                </button>
-                              </div> */}
-                            </div>
-                            <hr className="my-4" />
-                          </div>
+                          <CartItem
+                            key={product.id}
+                            product={product}
+                            decreaseCantProduct={decreaseCantProduct}
+                            increaseCantProduct={increaseCantProduct}
+                            removeToCart={removeToCart}
+                            inputChangeCant={inputChangeCant}
+                          />
                         ))
                       )}
                     </div>
@@ -237,7 +151,7 @@ function Cart() {
 
                       <div className="d-grid gap-2">
                         <Button variant="dark" size="md">
-                          Comprar
+                          Finalizar compra
                         </Button>
                       </div>
                     </div>

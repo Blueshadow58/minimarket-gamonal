@@ -131,6 +131,42 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const inputChangeCant = (event, id) => {
+    const item = cart.find((x) => x.id === id);
+    const itemIndex = cart.findIndex(
+      (itemInTheCart) => itemInTheCart.id === item.id
+    );
+
+    const inputData = event.target.value;
+
+    function isNumber(str) {
+      if (str.trim() === "") {
+        return false;
+      }
+      return !isNaN(str);
+    }
+
+    if (isNumber(inputData) && inputData >= 1) {
+      if (event.target.value <= item.stock) {
+        const itemToUpdate = {
+          ...item,
+          quantity: parseInt(inputData),
+        };
+        const cartDraft = [...cart];
+        cartDraft[itemIndex] = itemToUpdate;
+        setCart(cartDraft);
+      } else {
+        const itemToUpdate = {
+          ...item,
+          quantity: cart[itemIndex].quantity,
+        };
+        const cartDraft = [...cart];
+        cartDraft[itemIndex] = itemToUpdate;
+        setCart(cartDraft);
+      }
+    }
+  };
+
   const valueToShare = {
     cart,
     isInCart,
@@ -141,6 +177,7 @@ const CartProvider = ({ children }) => {
     totalPriceInCart,
     decreaseCantProduct,
     increaseCantProduct,
+    inputChangeCant,
   };
   return (
     // proveer valores a compartirs

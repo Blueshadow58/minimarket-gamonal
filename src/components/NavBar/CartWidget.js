@@ -10,7 +10,7 @@ const CartWidget = () => {
   return (
     <>
       {cantInCart === 0 ? (
-        <h1>Hola</h1>
+        <> </>
       ) : (
         <Nav.Link as={Link} to="/cart">
           {/* <CartFill color="white" size={20} /> */}

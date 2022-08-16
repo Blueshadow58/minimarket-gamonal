@@ -11,6 +11,7 @@ import CartProvider from "./context/CartContext";
 import Cart from "./components/Cart/Cart";
 import { useEffect, useState } from "react";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import CartContainer from "./components/Cart/CartContainer";
 
 const Message = "Greatings Message Testing";
 
@@ -34,7 +35,7 @@ function App() {
             element={<ItemListContainer />}
           />
 
-          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/cart" element={<CartContainer />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
