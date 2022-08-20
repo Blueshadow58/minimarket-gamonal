@@ -10,21 +10,6 @@ const ItemListContainer = ({ greetings }) => {
 
   const { category } = useParams();
 
-  // useEffect(() => {
-  //   const db = getFirestore();
-  //   const itemCollection = collection(db, "items");
-  //   getDocs(itemCollection)
-  //     .then((snapshot) => {
-  //       const data = snapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       }));
-  //       console.log(data);
-  //       setItems(data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   useEffect(() => {
     getItems()
       .then((data) => {
@@ -36,20 +21,6 @@ const ItemListContainer = ({ greetings }) => {
       })
       .catch((err) => alert(err));
   }, [category]);
-
-  // useEffect(() => {
-  //   const db = getFirestore();
-  //   const itemCollection = collection(db, "items", "BchsqIPatyIumiysdXEp");
-  //   getDoc(itemCollection)
-  //     .then((snapshot) => {
-  //       const data = snapshot.docs.map(doc => ({id: doc.id,...doc.data()}))
-  //       console.log(data)
-
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-
-  // },[]);
 
   return (
     <Container className="mt-5">

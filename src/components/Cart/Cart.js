@@ -7,45 +7,13 @@ import Button from "react-bootstrap/Button";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { CartX as CartIcon } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-
 import CartItem from "./CartItem";
 
-function Cart({ props }) {
-  const {
-    cart,
-    decreaseCantProduct,
-    increaseCantProduct,
-    cantInCart,
-    totalPriceInCart,
-    removeToCart,
-    inputChangeCant,
-  } = props;
+import CheckoutModal from "./Checkout/CheckoutModal";
 
-  //precio envio
-  // const {
-  //   cart,
-  //   isInCart,
-  //   addToCart,
-  //   removeToCart,
-  //   cantInCart,
-  //   totalPriceInCart,
-  //   decreaseCantProduct,
-  //   increaseCantProduct,
-  // } = valueToShare;
-
+function Cart({ props, handleShow }) {
+  const { cart, cantInCart, totalPriceInCart } = props;
   const [shipp, setShipp] = useState(0);
-
-  // const deleteProduct = (id) => {
-  //   removeToCart(id);
-  // };
-
-  // const reduceCant = (id) => {
-  //   decreaseCantProduct(id);
-  // };
-
-  // const increaseCant = (id) => {
-  //   increaseCantProduct(id);
-  // };
 
   useEffect(() => {}, [cart, cantInCart]);
 
@@ -88,15 +56,8 @@ function Cart({ props }) {
                           <CartIcon size={35} className="" />
                         </div>
                       ) : (
-                        Array.from(cart).map((product, index) => (
-                          <CartItem
-                            key={product.id}
-                            product={product}
-                            decreaseCantProduct={decreaseCantProduct}
-                            increaseCantProduct={increaseCantProduct}
-                            removeToCart={removeToCart}
-                            inputChangeCant={inputChangeCant}
-                          />
+                        Array.from(cart).map((product) => (
+                          <CartItem key={product.id} product={product} />
                         ))
                       )}
                     </div>
@@ -131,7 +92,7 @@ function Cart({ props }) {
                         </option>
                       </Form.Select>
 
-                      <hr className="my-4" />
+                      <div className="my-4" />
 
                       <div className="d-flex justify-content-between ">
                         <span className="text-uppercase h6">
@@ -150,8 +111,8 @@ function Cart({ props }) {
                       </div>
 
                       <div className="d-grid gap-2">
-                        <Button variant="dark" size="md">
-                          Finalizar compra
+                        <Button variant="dark" size="md" onClick={handleShow}>
+                          Comprar
                         </Button>
                       </div>
                     </div>

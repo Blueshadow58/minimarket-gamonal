@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Plus } from "react-bootstrap-icons";
 import { Dash } from "react-bootstrap-icons";
 import { TrashFill } from "react-bootstrap-icons";
 import { Col } from "react-bootstrap";
-
-function CartItem({
-  product,
-  decreaseCantProduct,
-  increaseCantProduct,
-  removeToCart,
-  inputChangeCant,
-}) {
-  const [inputValue, setInputValue] = useState(product.quantity);
-
-  //   useEffect(() => {
-  //     setInputValue(product.quantity);
-  //   }, [product.quantity]);
+import { CartContext } from "../../context/CartContext";
+function CartItem({ product }) {
+  const {
+    decreaseCantProduct,
+    increaseCantProduct,
+    removeToCart,
+    inputChangeCant,
+  } = useContext(CartContext);
 
   return (
     <div>

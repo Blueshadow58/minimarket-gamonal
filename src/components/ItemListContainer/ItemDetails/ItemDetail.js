@@ -44,9 +44,7 @@ const ItemDetail = ({ product }) => {
         animation="border"
         role="status"
         hidden={show}
-      >
-        {/* <span className="visually-hidden ">Loading...</span> */}
-      </Spinner>
+      ></Spinner>
 
       <div className="container px-4 px-lg-5 my-5" hidden={!show}>
         <div className="row gx-4 gx-lg-5 align-items-center">

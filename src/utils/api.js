@@ -1,52 +1,31 @@
-import { collection, doc, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  setDoc,
+  getDocs,
+  getFirestore,
+  addDoc,
+} from "firebase/firestore";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
-
-export const deleteData = (dataId) =>
-  fetch(`${BASE_URL}/posts/${dataId.userId}`, {
-    method: "DELETE",
+export const getItems = async () => {
+  const db = getFirestore();
+  const querySnapshot = await getDocs(collection(db, "items"));
+  const data = [];
+  querySnapshot.forEach((doc) => {
+    data.push({ id: doc.id, ...doc.data() });
   });
-
-const formatter = new Intl.NumberFormat("es-CL", {
-  style: "currency",
-  currency: "CLP",
-  minimumFractionDigits: 0,
-});
-
-// products.price = formatter.format(products.price);
-
-export const getItems = () => {
-  const task = new Promise((resolve) => {
-    const db = getFirestore();
-    const itemCollection = collection(db, "items");
-    getDocs(itemCollection)
-      .then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        resolve(data);
-      })
-      .catch((err) => console.log(err));
-  });
-  return task;
+  return data;
 };
 
-//Llammar producto
-export const getItem = (id) => {
-  const task = new Promise((resolve) => {
-    const db = getFirestore();
-    const itemCollection = collection(db, "items");
-    getDocs(itemCollection)
-      .then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        // resolve(resolve(data.id === id));
-        resolve(data.find((x) => x.id === id));
-      })
-      .catch((err) => console.log(err));
+//Llamar producto
+export const getItem = async (id) => {
+  const db = getFirestore();
+  const querySnapshot = await getDocs(collection(db, "items"));
+  const data = [];
+  querySnapshot.forEach((doc) => {
+    data.push({ id: doc.id, ...doc.data() });
   });
-  return task;
+  return data.find((x) => x.id === id);
 };
