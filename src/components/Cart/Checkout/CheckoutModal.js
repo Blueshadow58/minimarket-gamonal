@@ -13,6 +13,8 @@ function CheckoutModal({ show, hide, props }) {
   const [orderKey, setOrderKey] = useState(false);
   const [userData, setUserData] = useState(false);
   const [sendOrder, setSendOrder] = useState(false);
+  const [spinner, setSpinner] = useState(false);
+  const [keyTab, setKeyTab] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,17 +29,20 @@ function CheckoutModal({ show, hide, props }) {
       setEmailAlert(true);
     } else {
       setSendOrder(true);
+      setKeyTab(true);
+      setSpinner(true);
     }
   };
 
   useEffect(() => {
     if (sendOrder) {
+      setSendOrder(false);
       SendOrder(userData, props).then((id) => {
         setOrderKey(id);
+        setSpinner(false);
       });
       setUserData(false);
       cleanCart();
-      setSendOrder(false);
     }
   }, [cleanCart, props, sendOrder, userData]);
 
@@ -49,20 +54,24 @@ function CheckoutModal({ show, hide, props }) {
             <Modal.Title>Detalle de compra </Modal.Title>
           </Modal.Header>
 
-          <Modal.Body hidden={!orderKey}>
-            {!orderKey ? (
+          {orderKey ? (
+            <Modal.Body>
+              <ResponseOrder orderKey={orderKey} userData={userData} />
+            </Modal.Body>
+          ) : (
+            <div className="text-center">
               <Spinner
-                className="text center"
+                size="lg"
+                className="my-5 "
                 variant="dark"
                 animation="border"
                 role="status"
+                hidden={!spinner}
               ></Spinner>
-            ) : (
-              <ResponseOrder orderKey={orderKey} userData={userData} />
-            )}
-          </Modal.Body>
+            </div>
+          )}
 
-          <Modal.Body hidden={orderKey}>
+          <Modal.Body hidden={keyTab}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Ingrese su nombre </Form.Label>
               <Form.Control
@@ -115,7 +124,7 @@ function CheckoutModal({ show, hide, props }) {
             <Button variant="danger" onClick={hide}>
               Close
             </Button>
-            <Button variant="dark" type="submit" hidden={orderKey}>
+            <Button variant="dark" type="submit" hidden={keyTab}>
               Finalizar compra
             </Button>
           </Modal.Footer>
