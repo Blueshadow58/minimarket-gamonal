@@ -15,6 +15,7 @@ export const SendOrder = async (userData, props) => {
     buyer: userData,
     items: cart,
     total: totalPriceInCart,
+    date: Date(),
   };
 
   //Actualizar stock del carro
