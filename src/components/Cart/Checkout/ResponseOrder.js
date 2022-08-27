@@ -1,12 +1,10 @@
 import Alert from "react-bootstrap/Alert";
 
-function ResponseOrder({ orderKey, userData }) {
+function ResponseOrder({ orderKey }) {
   return (
     <>
       <Alert variant="success">
-        <Alert.Heading>
-          Hey, gracias {userData.name} por tu compra!
-        </Alert.Heading>
+        <Alert.Heading>Gracias por tu compra!</Alert.Heading>
         <p>
           Tú codigo de orden se encuentra a continuacion no olvides copiarla!
         </p>

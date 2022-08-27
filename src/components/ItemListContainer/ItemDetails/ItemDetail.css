@@ -16,3 +16,6 @@ height: 4rem !important;
 }
 
 
+.minHeight{
+  min-height: calc( 100vh - 10vh);
+}

@@ -111,7 +111,12 @@ function Cart({ props, handleShow }) {
                       </div>
 
                       <div className="d-grid gap-2">
-                        <Button variant="dark" size="md" onClick={handleShow}>
+                        <Button
+                          variant="dark"
+                          size="md"
+                          onClick={handleShow}
+                          disabled={!cart.length}
+                        >
                           Comprar
                         </Button>
                       </div>

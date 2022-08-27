@@ -14,7 +14,7 @@ function ItemDetailContainer() {
       setProduct(data);
     });
   }, [id]);
-
+  // return console.log(product === undefined);
   return <ItemDetail product={product} />;
 }
 
