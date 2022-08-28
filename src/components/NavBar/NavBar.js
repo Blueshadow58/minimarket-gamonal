@@ -5,8 +5,34 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getItems } from "../../utils/api";
 
-function navBar() {
+const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const uniqueIds = [];
+
+    getItems()
+      .then((data) => {
+        setCategories(
+          data.filter((element) => {
+            const isDuplicate = uniqueIds.includes(element.category);
+
+            if (!isDuplicate) {
+              uniqueIds.push(element.category);
+
+              return true;
+            }
+
+            return false;
+          })
+        );
+      })
+      .catch((err) => alert(err));
+  }, []);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -21,15 +47,22 @@ function navBar() {
             </Nav.Link>
             {/* <Nav.Link href="#Contacto">Contacto</Nav.Link> */}
             <NavDropdown title="Catalogo">
-              <NavDropdown.Item as={Link} to="/category/cafe">
-                Café
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/conserva">
+              {categories.map((category) => (
+                <NavDropdown.Item
+                  as={Link}
+                  to={`/category/${category.category}`}
+                  className="text-capitalize"
+                >
+                  {category.category}
+                </NavDropdown.Item>
+              ))}
+
+              {/* <NavDropdown.Item as={Link} to="/category/conserva">
                 Conservas
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/category/mermelada">
                 Mermelada
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               {/* <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Separated link
@@ -50,6 +83,6 @@ function navBar() {
       </Container>
     </Navbar>
   );
-}
+};
 
-export default navBar;
+export default NavBar;
