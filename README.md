@@ -1,70 +1,124 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Proyecto: Minimarket-Gamonal
 
-## Available Scripts
+Este es un ecommerce para una tienda de abarrotes y pasteleria, la aplicación
+fue creada utilizando tecnologias como React.js y Firebase, para entregar diferentes
+funcionalidades entre las cuales se enucentran, la obtencion de datos desde Firestore,
+carrito de compras y checkout entre otras funcionalidades que se mencionaran a
+coontinuacón.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Navegación de la pagina
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Detalle de producto
 
-### `npm run build`
+En esta pagina se realiza una llamada asyncrona para la obtencion de un producto
+en cuestión, esta llamada es desencadenada al momento de realizar un click en el boton
+"Ver detalle" en la pagina principal sobre un producto.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Una vez es obtenido dicho Id se realiza una consulta a firestore para obtener la
+información correspondiente a dicho producto, en el caso de no encontrarse dicho
+id se es retornado un mensaje "not found".
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Carrito de compras
 
-### `npm run eject`
+En esta pagina se ven reflejados todos los productos agregados al carrito con
+su respectiva cantidad seleccionada por el cliente, ademas de poder modificar la cantidad
+de productos a comprar.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Finalizar compra - Checkout
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+En esta modal se solicita la información del usuario para la generacion de una orden de 
+compra, la cual se encuentra constituida con la informacion del ususario, los productos 
+almacenados dentro del carrito ademas de otros campos como la fecha actual y el estado
+de la orden.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-## Learn More
+Posteriormente al clickear el boton de finalizar la compra, se genera una orden con los 
+datos anteriormente mencionados y es registrada en firestore, cabe mencionar que la 
+cantidad de productos al ingresar una orden es restada del stock total de los productos
+almacenados en firebase, esto quiere decir que el total de los productos sigue un orden
+coherente en los siguientes flujos de compra.
+## Aprendizaje
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Primeramente aprendi el funcionamiento y el como trabajar con React.js, tanto el uso de 
+los [Hooks](https://es.reactjs.org/docs/hooks-intro.html) y su enfoque a componentes como tambien el como trabajar con las [Promises.](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Por otro lado tambien aprendi a como trabajar con firebase a la hora del manejo de datos,
+tanto al momento de la obtencion para consumirlos en mis componenetes como en la generación
+y almanecemiento de estos en Firestore.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🛠 Herramientas - Tecnologias utilizadas
 
-### Analyzing the Bundle Size
+Este proyecto se construyo utilizando las siguientes tecnologias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [React.js](https://es.reactjs.org/)
+- Html5
+- [React-Bootstrap5](https://react-bootstrap.github.io/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Firebase](https://firebase.google.com/)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Objetivos del proyecto
 
-### Advanced Configuration
+1 . En primera instancia el proyecto cumple con el objetivo de ser el entregable final de 
+el curso de [CODERHOUSE sobre React.js](https://www.coderhouse.cl/online/reactjs)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2 . Como segundo objetivo cumple con la necesidad de una tienda para ofrecer sus
+productos de forma online, y de esta forma buscar aumentar sus ganancias facilidando 
+el acceso a sus productos.
 
-### Deployment
+3 . Finalmente como tercer objetivo funcionara como un extra a mi portafolio.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Mapa de ruta
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [x]  Modificación de cantidad desde el carrito 
+- [ ]  Ambiente administrador 
+- [ ]  Crud productos
+- [ ]  Sistema de pago
+
+
+
+## Ejecutar localmente
+
+Clonar el proyecto
+
+```bash
+  git clone https://github.com/Blueshadow58/minimarket-gamonal.git
+```
+
+Ir al directorio del proyecto
+
+```bash
+  cd minimarket-gamonal
+```
+
+Instalar las dependencias
+
+```bash
+  npm install
+```
+
+Iniciar el servidor
+
+```bash
+  npm run start / npm start
+```
+
+
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/franco-gamonal-57b8971b6/)
+
+
