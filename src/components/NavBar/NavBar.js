@@ -19,13 +19,10 @@ const NavBar = () => {
         setCategories(
           data.filter((element) => {
             const isDuplicate = uniqueIds.includes(element.category);
-
             if (!isDuplicate) {
               uniqueIds.push(element.category);
-
               return true;
             }
-
             return false;
           })
         );
@@ -45,10 +42,10 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">
               Inicio
             </Nav.Link>
-            {/* <Nav.Link href="#Contacto">Contacto</Nav.Link> */}
             <NavDropdown title="Catalogo">
               {categories.map((category) => (
                 <NavDropdown.Item
+                  key={category.category}
                   as={Link}
                   to={`/category/${category.category}`}
                   className="text-capitalize"
@@ -56,28 +53,12 @@ const NavBar = () => {
                   {category.category}
                 </NavDropdown.Item>
               ))}
-
-              {/* <NavDropdown.Item as={Link} to="/category/conserva">
-                Conservas
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/mermelada">
-                Mermelada
-              </NavDropdown.Item> */}
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
-
           <Nav className="align-items-center">
             <CartWidget />
-            {/* Modulos de login */}
             <Nav.Link href="/">Iniciar Sesion</Nav.Link>
             <Nav.Link href="/">Registrarme</Nav.Link>
-            {/* <Nav.Link eventKey={2} href="#">
-              
-            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

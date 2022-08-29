@@ -9,6 +9,8 @@ import { Spinner } from "react-bootstrap";
 
 function CheckoutModal({ show, hide, props }) {
   const { cantInCart, cleanCart } = props;
+  const [nameAlert, setNameAlert] = useState(false);
+  const [phoneAlert, setPhoneAlert] = useState(false);
   const [emailAlert, setEmailAlert] = useState(false);
   const [orderKey, setOrderKey] = useState(false);
   const [userData, setUserData] = useState(false);
@@ -25,9 +27,16 @@ function CheckoutModal({ show, hide, props }) {
       email: email.value,
     });
 
-    if (email.value !== reEmail.value) {
+    if (name.value === "" || name.value.trim().split(/\s+/).length < 2) {
+      setNameAlert(true);
+    } else if (!/^[0-9]+$/.test(phone.value) || phone.value.length !== 9) {
+      setNameAlert(false);
+      setPhoneAlert(true);
+    } else if (email.value !== reEmail.value || email.value === "") {
+      setPhoneAlert(false);
       setEmailAlert(true);
     } else {
+      setEmailAlert(false);
       setSendOrder(true);
       setKeyTab(true);
       setSpinner(true);
@@ -78,9 +87,12 @@ function CheckoutModal({ show, hide, props }) {
                 name="name"
                 type="text"
                 placeholder="Nombre"
-                required
                 autoFocus
+                isInvalid={nameAlert}
               />
+              <Form.Control.Feedback type="invalid">
+                Verifique ingresar un nombre valido
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Numero telefonico</Form.Label>
@@ -89,17 +101,15 @@ function CheckoutModal({ show, hide, props }) {
                 name="phone"
                 type="text"
                 placeholder="Telefono"
-                required
+                isInvalid={phoneAlert}
               />
+              <Form.Control.Feedback type="invalid">
+                Verifique ingresar un numero telefonico valido de 9 digitos
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Correo electronico</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="Correo"
-                required
-              />
+              <Form.Control name="email" type="email" placeholder="Correo" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Reingrese su correo electronico</Form.Label>
@@ -107,16 +117,14 @@ function CheckoutModal({ show, hide, props }) {
                 name="reEmail"
                 type="email"
                 placeholder="Reingrese su correo"
-                required
                 isInvalid={emailAlert}
               />
               <Form.Control.Feedback type="invalid">
-                Verifique que los emails ingresados con iguales
+                Verifique que los emails sean validos e iguales
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
               <Form.Label>Cantidad de productos ({cantInCart})</Form.Label>
-              {/* Tabla con el carrito */}
               <CheckoutTable props={props} />
             </Form.Group>
           </Modal.Body>

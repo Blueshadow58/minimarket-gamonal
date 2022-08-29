@@ -5,7 +5,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 const CartWidget = () => {
-  const { cantInCart } = useContext(CartContext); //Consumir del context
+  const { cantInCart } = useContext(CartContext);
 
   return (
     <>
@@ -13,8 +13,6 @@ const CartWidget = () => {
         <> </>
       ) : (
         <Nav.Link as={Link} to="/cart">
-          {/* <CartFill color="white" size={20} /> */}
-          {/* {cantInCart} */}
           <button className="btn btn-outline-light" type="button">
             <CartFill className="me-1 pb-1" color="white" size={20} />
             Cart

@@ -1,15 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); 
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 .navbar-brand {
-   font-family: Pacifico; 
- }
-
-
-
- /* .navbar-nav {
-   
-      transform: translateX(-50%)  ;
-      left: 50%;
-      position: absolute;
-   
- } */
+  font-family: Pacifico;
+}

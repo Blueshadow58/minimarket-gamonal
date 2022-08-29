@@ -24,7 +24,9 @@ function CartItem({ product }) {
         </div>
         <div className="col-md-3 col-lg-3 col-xl-3">
           <div className="row">
-            <span className="text-muted h6">{product.category}</span>
+            <span className="text-muted h6 text-capitalize">
+              {product.category}
+            </span>
           </div>
           <div className="row">
             <span className="text-black mb-0 h6">{product.description}</span>

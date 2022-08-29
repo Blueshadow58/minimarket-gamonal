@@ -3,8 +3,6 @@ import { Plus } from "react-bootstrap-icons";
 import { Dash } from "react-bootstrap-icons";
 import { useState } from "react";
 
-//Me gustaria haber pasado el producto para obtener el producto y mostrarlo en el alert
-//y posteriormente en el alert de bootstrap pero no queria modificar lo solicitado
 function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(parseInt(initial));
 
@@ -24,10 +22,6 @@ function ItemCount({ stock, initial, onAdd }) {
     setCount(parseInt(initial));
   }, [initial]);
 
-  // const addToCart = () => {
-  //   alert("Se han agregado " + count + " Productos");
-  // };
-
   return (
     <div className="center">
       <div className="">
@@ -44,7 +38,6 @@ function ItemCount({ stock, initial, onAdd }) {
           <input
             type="text"
             className="form-control input-number text-center"
-            // value={count}
             onChange={(value) => this.onChange(value)}
             value={count}
           />

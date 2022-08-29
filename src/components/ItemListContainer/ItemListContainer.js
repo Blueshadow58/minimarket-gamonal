@@ -1,13 +1,12 @@
 import Container from "react-bootstrap/Container";
-import "./ItemListContainer.css";
+import Spinner from "react-bootstrap/Spinner";
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { getItems } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
-const ItemListContainer = ({ greetings }) => {
+const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-
   const { category } = useParams();
 
   useEffect(() => {
@@ -24,6 +23,13 @@ const ItemListContainer = ({ greetings }) => {
 
   return (
     <Container className="mt-5">
+      <Spinner
+        className="customSpinner"
+        variant="dark"
+        animation="border"
+        role="status"
+        hidden={items.length}
+      ></Spinner>
       <ItemList items={items} />
     </Container>
   );

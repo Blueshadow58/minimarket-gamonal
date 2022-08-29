@@ -6,7 +6,6 @@ import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
-  //Objtener de la ruta
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,7 +13,7 @@ function ItemDetailContainer() {
       setProduct(data);
     });
   }, [id]);
-  // return console.log(product === undefined);
+
   return <ItemDetail product={product} />;
 }
 

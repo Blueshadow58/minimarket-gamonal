@@ -3,3 +3,7 @@
     height: 13rem !important;
 }
 
+.DisabledCard{
+    pointer-events: none;
+    opacity: 0.4;
+}

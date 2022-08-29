@@ -1,13 +1,4 @@
-import {
-  collection,
-  doc,
-  setDoc,
-  getDocs,
-  getFirestore,
-  addDoc,
-} from "firebase/firestore";
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 export const getItems = async () => {
   const db = getFirestore();
@@ -19,7 +10,6 @@ export const getItems = async () => {
   return data;
 };
 
-//Llamar producto
 export const getItem = async (id) => {
   const db = getFirestore();
   const querySnapshot = await getDocs(collection(db, "items"));

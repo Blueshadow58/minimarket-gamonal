@@ -1,7 +1,7 @@
 import Table from "react-bootstrap/Table";
 
 function CheckoutTable({ props }) {
-  const { cart, cantInCart, totalPriceInCart } = props;
+  const { cart, totalPriceInCart } = props;
   return (
     <Table striped bordered hover>
       <thead>

@@ -1,21 +1,25 @@
-.customSpinner{
+.customSpinner {
   position: absolute;
-top:50%;
-left:50%;
-width: 4rem !important;
-height: 4rem !important;
+  top: 50%;
+  left: 50%;
+  width: 4rem !important;
+  height: 4rem !important;
 }
 
-.detail-img{
+.detail-img {
   max-height: 30rem;
   text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
+.minHeight {
+  min-height: calc(100vh - 10vh);
+}
 
-.minHeight{
-  min-height: calc( 100vh - 10vh);
+.vertical-center {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }

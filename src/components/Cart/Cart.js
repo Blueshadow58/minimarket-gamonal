@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { CartContext } from "../../context/CartContext";
+import React, { useEffect } from "react";
 
 import "./Cart.css";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { CartX as CartIcon } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
-import CheckoutModal from "./Checkout/CheckoutModal";
-
 function Cart({ props, handleShow }) {
   const { cart, cantInCart, totalPriceInCart } = props;
-  const [shipp, setShipp] = useState(0);
 
   useEffect(() => {}, [cart, cantInCart]);
 
@@ -42,7 +37,7 @@ function Cart({ props, handleShow }) {
                           </span>
                         </Link>
                         <span className="mb-0 text-muted h5 text-end">
-                          {cantInCart} Productos en el carrito
+                          {cantInCart} Producto(s) en el carrito
                         </span>
                       </div>
                       <hr className="my-4" />
@@ -75,23 +70,6 @@ function Cart({ props, handleShow }) {
                         <span className="h5">{totalPriceInCart}</span>
                       </div>
 
-                      <span className="text-uppercase  h6">Envio</span>
-
-                      <Form.Select
-                        className="text-black mt-3"
-                        aria-label=""
-                        size=""
-                        value={shipp}
-                        onChange={(e) => setShipp(parseInt(e.target.value))}
-                      >
-                        <option value={0} className="">
-                          Retiro en local $0
-                        </option>
-                        <option value={2000} className="">
-                          Envio a domicilio $2.000
-                        </option>
-                      </Form.Select>
-
                       <div className="my-4" />
 
                       <div className="d-flex justify-content-between ">
@@ -100,15 +78,8 @@ function Cart({ props, handleShow }) {
                         </span>
                         <span className="h5">$ {totalPriceInCart}</span>
                       </div>
-                      <div className="d-flex justify-content-between mb-3">
-                        <span className="text-uppercase h6">Envio</span>
-                        <span className="h5">$ {shipp}</span>
-                      </div>
 
-                      <div className="d-flex justify-content-between mb-5">
-                        <span className="text-uppercase h6">Precio total</span>
-                        <span className="h5">$ {totalPriceInCart + shipp}</span>
-                      </div>
+                      <div className="my-4" />
 
                       <div className="d-grid gap-2">
                         <Button
