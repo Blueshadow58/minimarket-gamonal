@@ -57,8 +57,6 @@ const NavBar = () => {
           </Nav>
           <Nav className="align-items-center">
             <CartWidget />
-            <Nav.Link href="/">Iniciar Sesion</Nav.Link>
-            <Nav.Link href="/">Registrarme</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
