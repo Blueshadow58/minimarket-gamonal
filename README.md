@@ -11,7 +11,7 @@ coontinuacón.
 
 ## Navegación de la pagina
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/coderhouse-ecommerce-5ee60.appspot.com/o/Ecommerse.gif?alt=media&token=c77990cd-47a8-4ce2-823d-f91830d8a8b1)
 
 
 ## Detalle de producto
@@ -20,7 +20,7 @@ En esta pagina se realiza una llamada asyncrona para la obtencion de un producto
 en cuestión, esta llamada es desencadenada al momento de realizar un click en el boton
 "Ver detalle" en la pagina principal sobre un producto.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/coderhouse-ecommerce-5ee60.appspot.com/o/Detalle%20de%20producto.png?alt=media&token=2971a315-18b4-4a89-9ba6-c319deace22f)
 
 Una vez es obtenido dicho Id se realiza una consulta a firestore para obtener la
 información correspondiente a dicho producto, en el caso de no encontrarse dicho
@@ -32,7 +32,7 @@ En esta pagina se ven reflejados todos los productos agregados al carrito con
 su respectiva cantidad seleccionada por el cliente, ademas de poder modificar la cantidad
 de productos a comprar.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/coderhouse-ecommerce-5ee60.appspot.com/o/Carrito.png?alt=media&token=f80512b2-dcbe-4445-bcb3-c906ebcd58b6)
 
 ## Finalizar compra - Checkout
 
@@ -41,7 +41,7 @@ compra, la cual se encuentra constituida con la informacion del ususario, los pr
 almacenados dentro del carrito ademas de otros campos como la fecha actual y el estado
 de la orden.
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/coderhouse-ecommerce-5ee60.appspot.com/o/Checkout.png?alt=media&token=5ec6cb15-59f2-43eb-9d32-f585488a5f54)
 
 Posteriormente al clickear el boton de finalizar la compra, se genera una orden con los 
 datos anteriormente mencionados y es registrada en firestore, cabe mencionar que la 
