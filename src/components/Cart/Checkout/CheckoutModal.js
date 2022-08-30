@@ -27,7 +27,7 @@ function CheckoutModal({ show, hide, props }) {
       email: email.value,
     });
 
-    if (name.value === "" || name.value.trim().split(/\s+/).length < 2) {
+    if (name.value === "" || name.value.length < 5) {
       setNameAlert(true);
     } else if (!/^[0-9]+$/.test(phone.value) || phone.value.length !== 9) {
       setNameAlert(false);
@@ -91,7 +91,7 @@ function CheckoutModal({ show, hide, props }) {
                 isInvalid={nameAlert}
               />
               <Form.Control.Feedback type="invalid">
-                Verifique ingresar un nombre valido
+                Verifique ingresar un nombre valido ej: Juan Torres
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
