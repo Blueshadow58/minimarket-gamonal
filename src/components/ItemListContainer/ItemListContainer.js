@@ -10,13 +10,9 @@ const ItemListContainer = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    getItems()
+    getItems(category)
       .then((data) => {
-        if (category) {
-          setItems(data.filter((product) => product.category === category));
-        } else {
-          setItems(data);
-        }
+        setItems(data);
       })
       .catch((err) => alert(err));
   }, [category]);

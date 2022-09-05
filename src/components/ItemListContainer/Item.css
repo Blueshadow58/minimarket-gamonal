@@ -1,9 +1,9 @@
-
-.CustomImgCard{
-    height: 13rem !important;
+.CustomImgCard {
+  height: 13rem !important;
+  object-fit: contain;
 }
 
-.DisabledCard{
-    pointer-events: none;
-    opacity: 0.4;
+.DisabledCard {
+  pointer-events: none;
+  opacity: 0.4;
 }
