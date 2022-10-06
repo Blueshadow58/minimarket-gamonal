@@ -7,7 +7,7 @@ funcionalidades entre las cuales se enucentran, la obtencion de datos desde Fire
 carrito de compras y checkout entre otras funcionalidades que se mencionaran a
 coontinuacón.
 
-
+- Link al proyecto: https://minimarket-gamonal.netlify.app/
 
 ## Navegación de la pagina
 
